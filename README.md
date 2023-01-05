@@ -94,11 +94,17 @@ yarn android/ios or npx expo start
 │   └── molecules
 │   └── organisms
 │   └── templates
+├── constants
+├── hooks
 ├── pages
+├── services
+├── store
 ├── styles
-|   └── theme
-|   └── colors
-|   └── spacings
+│   └── theme
+        ── colors
+        ── spacing
+        ── breakpoints
+├── types
 ```
 
 <div align="center">
