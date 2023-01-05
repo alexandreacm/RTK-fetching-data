@@ -1,20 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Provider } from 'react-redux';
+import { ThemeProvider } from '@shopify/restyle';
+
+import { Home } from './src/pages/Home';
+import { store } from './src/store';
+import theme from './src/styles/theme';
+import useExpoFont from './src/hooks/useExpoFont';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  const isLoadingFont = useExpoFont();
+
+  if (isLoadingFont) {
+    return (
+      <>
+        <StatusBar style="auto" />
+        <Provider store={store}>
+          <ThemeProvider theme={theme}>
+            <Home />
+          </ThemeProvider>
+        </Provider>
+      </>
+    );
+  }
+
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
