@@ -1,0 +1,21 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Coca cola 600ml",
+      "description": "",
+      "price": 7.5,
+      "category_id": 2
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Hambúrgueres"
+    },
+    {
+      "id": 2,
+      "name": "Refrigerantes"
+    }
+  ]
+}
