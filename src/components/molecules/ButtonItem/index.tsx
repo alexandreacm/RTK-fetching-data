@@ -1,25 +1,35 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
+import { AntDesign as Icon } from '@expo/vector-icons';
+
 import { useDeleteProductMutation } from '../../../services/api';
-import { Product } from '../../../types';
 
 import { Box, Text } from '../../atoms';
 
 type Props = {
-    item: Product
+    id: number,
+    name: string,
+    onUpdate: (id: number) => void
 }
 
-export function ButtonItem({ item }: Props) {
+export function ButtonItem({ id, name, onUpdate }: Props) {
     const [deleteProduct] = useDeleteProductMutation();
 
     return (
-        <TouchableOpacity onPress={() => deleteProduct(String(item?.id))}>
+        <TouchableOpacity onPress={() => onUpdate(id)}>
             <Box
                 backgroundColor={'cardBox'}
                 marginBottom={'l'}
                 borderRadius={10}
-                padding={'s'}>
-                <Text variant={'text'} key={item.id}>Product: {item?.name}</Text>
+                padding={'l'}>
+                <Box
+                    width='100%'
+                    flexDirection='row'
+                    alignItems='center'
+                    justifyContent='center'>
+                    <Text variant={'text'} key={id}>Product: {name}</Text>
+                    <Icon name='delete' size={20} color={'black'} onPress={() => deleteProduct(String(id))} />
+                </Box>
             </Box>
         </TouchableOpacity>
     );

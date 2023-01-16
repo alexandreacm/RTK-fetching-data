@@ -5,11 +5,12 @@ import { ProductItem } from '../../organisms/Product';
 
 type Props = {
     data: ProductsResponseType | Product[],
+    onUpdate: (id: number) => void
 }
 
-export function Products({ data }: Props) {
+export function Products({ data, onUpdate }: Props) {
 
-    const renderItem = ({ item }: { item: Product }) => <ProductItem item={item} />
+    const renderItem = ({ item }: { item: Product }) => <ProductItem item={item} onUpdate={onUpdate} />
 
     return (
         <FlatList

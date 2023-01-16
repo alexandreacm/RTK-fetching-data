@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Platform, TextInput } from 'react-native';
 import slugify from 'slugify';
 import { useForm, Controller } from 'react-hook-form';
@@ -17,16 +17,17 @@ import { Products } from '../../components/templates/Products';
 
 export function Home() {
     const { data = [], isLoading, isFetching, error } = useGetProductsQuery();
-    const [createProduct, { isSuccess }] = useCreateProductMutation();
+    const [createProduct] = useCreateProductMutation();
     const [updateProduct] = useUpdateProductMutation();
 
     const { control, handleSubmit, reset } = useForm();
+    const [productId, setProductId] = useState<number>();
 
 
-    async function AddProduct(value: Product) {
+    async function AddProduct(value: string) {
         const newProduct: Product = {
             id: Number(`${slugify(Date.now() + " ", { lower: true })}`),
-            name: value.name,
+            name: value,
             description: 'New Prodcut',
             price: 5.0,
             category_id: 2
@@ -40,17 +41,22 @@ export function Home() {
         // }
     }
 
-    function handleUpdateProduct(id: number) {
-        const newProduct: Product = {
-            id: id,
-            name: "Chocolate",
+    async function handleUpdateProduct(nameProduct: string) {
+        const upProduct: Product = {
+            id: Number(productId),
+            name: nameProduct,
             description: "New Product",
             price: 5.5,
             category_id: 2
         }
 
-        updateProduct(newProduct);
-        alert('updated')
+        updateProduct(upProduct);
+        alert('Field updated');
+        reset();
+    }
+
+    function onHandleUpdate(id: number) {
+        setProductId(id);
     }
 
     return (
@@ -68,10 +74,15 @@ export function Home() {
             >
                 <ButtonLabel
                     onPress={handleSubmit(async (data) => {
-                        await AddProduct(data as Product);
+                        await AddProduct(data.name);
                     })}
-                    label='Create Product' />
-                <ButtonLabel onPress={() => handleUpdateProduct(8)} label='Update Product' />
+                    label='Create Product'
+                />
+                <ButtonLabel
+                    onPress={handleSubmit(async (data) => {
+                        await handleUpdateProduct(data?.name)
+                    })}
+                    label='Update Product' />
             </Box>
 
             <Controller
@@ -119,7 +130,7 @@ export function Home() {
             }
 
 
-            <Products data={data} />
+            <Products data={data} onUpdate={onHandleUpdate} />
         </Box>
     );
 }

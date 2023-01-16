@@ -15,6 +15,10 @@ export interface ProductsResponseType extends BaseResponseType {
     data: Array<Product>;
 };
 
+// export type ProductsResponseType = BaseResponseType & {
+//     data: Array<Product>;
+// };
+
 export interface ProductResponseType extends BaseResponseType {
     data: Product;
 };

@@ -1,10 +1,31 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "Coca cola 600ml",
-      "description": "",
-      "price": 7.5,
+      "name": "Cerveja 300ml",
+      "description": "New Product",
+      "price": 5.5,
+      "category_id": 2,
+      "id": 1673565809017
+    },
+    {
+      "name": "Red Apple",
+      "description": "New Product",
+      "price": 5.5,
+      "category_id": 2,
+      "id": 1673568046105
+    },
+    {
+      "id": 1673568051107,
+      "name": "Milk 1ml",
+      "description": "New Prodcut",
+      "price": 5,
+      "category_id": 2
+    },
+    {
+      "id": 1673894043785,
+      "name": "Green Apple",
+      "description": "New Prodcut",
+      "price": 5,
       "category_id": 2
     }
   ],
