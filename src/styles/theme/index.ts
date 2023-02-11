@@ -12,6 +12,7 @@ export const palette = {
     greenLight: '#56DCBA',
     greenPrimary: '#0ECD9D',
     greenDark: '#0A906E',
+    blackOpacity: 'rgba(0,0,0, 0.4)',
 }
 
 const theme = createTheme({
@@ -22,6 +23,7 @@ const theme = createTheme({
         loading: palette.black,
         cardBox: palette.greenPrimary,
         backgroundButton: palette.greenDark,
+        borderInput: palette.blackOpacity,
         ...palette,
     },
     spacing: {
@@ -69,6 +71,19 @@ const theme = createTheme({
             fontWeight: 'bold'
         }
     },
+    inputVariants: {
+        default: { width: 0 },
+        inputConfig: {
+            width: 200,
+            margin: 2,
+            borderWidth: 1,
+            height: 30,
+            padding: 5,
+            borderRadius: 5,
+            marginTop: 15,
+            borderColor: "rgba(0,0,0, 0.4)",
+        }
+    }
 
 })
 

@@ -3,7 +3,7 @@ import { Platform, TextInput } from 'react-native';
 import slugify from 'slugify';
 import { useForm, Controller } from 'react-hook-form';
 
-import { Box, Text } from '../../components/atoms';
+import { Box, Input, Text } from '../../components/atoms';
 import { ButtonLabel } from '../../components/atoms/ButtonLabel';
 
 import {
@@ -16,7 +16,7 @@ import { Product } from '../../types';
 import { Products } from '../../components/templates/Products';
 
 export function Home() {
-    const { data = [], isLoading, isFetching, error } = useGetProductsQuery();
+    const { data = [], isLoading, isFetching, error, refetch } = useGetProductsQuery();
     const [createProduct] = useCreateProductMutation();
     const [updateProduct] = useUpdateProductMutation();
 
@@ -35,10 +35,7 @@ export function Home() {
 
         createProduct(newProduct);
         reset();
-
-        // if (isSuccess) {
-        //     alert('Created successfully');
-        // }
+        // refetch();
     }
 
     async function handleUpdateProduct(nameProduct: string) {
@@ -92,19 +89,18 @@ export function Home() {
                     required: true
                 }}
                 render={({ field: { onChange, value } }) => (
-                    <TextInput
+                    <Input
                         onChangeText={onChange}
                         value={value}
-                        style={{
-                            width: 200,
-                            margin: 2,
-                            borderWidth: 1,
-                            height: 30,
-                            padding: 5,
-                            borderRadius: 5,
-                            marginTop: 15,
-                            borderColor: "rgba(0,0,0, 0.4)",
-                        }} placeholder="Product Name"
+                        placeholder="Product Name"
+                        width={250}
+                        height={40}
+                        margin='s'
+                        borderWidth={1}
+                        padding='s'
+                        borderRadius={5}
+                        marginTop='l'
+                        borderColor='borderInput'
                     />
                 )}
             />
