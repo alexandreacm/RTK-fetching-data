@@ -15,15 +15,22 @@
       "id": 1673568046105
     },
     {
-      "id": 1673568051107,
-      "name": "Milk 1ml",
+      "id": 1678248428618,
+      "name": "Pancake",
       "description": "New Prodcut",
       "price": 5,
       "category_id": 2
     },
     {
-      "id": 1673894043785,
-      "name": "Green Apple",
+      "id": 1678248584277,
+      "name": "Cookies",
+      "description": "New Prodcut",
+      "price": 5,
+      "category_id": 2
+    },
+    {
+      "id": 1678248615075,
+      "name": "Waffle",
       "description": "New Prodcut",
       "price": 5,
       "category_id": 2

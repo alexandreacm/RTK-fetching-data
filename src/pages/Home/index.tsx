@@ -16,7 +16,7 @@ import { Product } from '../../types';
 import { Products } from '../../components/templates/Products';
 
 export function Home() {
-    const { data = [], isLoading, isFetching, error, refetch } = useGetProductsQuery();
+    const { data = [], isLoading, error, refetch } = useGetProductsQuery();
     const [createProduct] = useCreateProductMutation();
     const [updateProduct] = useUpdateProductMutation();
 
@@ -110,13 +110,6 @@ export function Home() {
                 <Text
                     color={'loading'}
                     fontSize={35}>Loading...</Text>
-            }
-
-            {
-                isFetching &&
-                <Text
-                    color={'loading'}
-                    fontSize={35}>Fetching...</Text>
             }
 
             {
